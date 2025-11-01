@@ -13,6 +13,11 @@ app.post('/gerar-video', upload.single('imagem'), async (req, res) => {
   const prompt = req.body.prompt;
   const imagem = req.file;
 
+  // Validação básica
+  if (!prompt || !imagem) {
+    return res.status(400).json({ error: 'Prompt e imagem são obrigatórios' });
+  }
+
   try {
     const response = await axios.post(
       'https://generativelanguage.googleapis.com/v1beta/models/gemini-pro-vision:generateContent?key=AIzaSyBzl8n29xiFFBEmLZKq5oSxMthTCWsf_ag',
@@ -38,12 +43,12 @@ app.post('/gerar-video', upload.single('imagem'), async (req, res) => {
       }
     );
 
-    // Aqui você pode adaptar o que fazer com a resposta
     const resultado = response.data;
-    console.log(resultado);
 
-    // Simulando um link de vídeo por enquanto
-    res.json({ videoUrl: 'https://exemplo.com/video-gerado.mp4' });
+    // Retornando o conteúdo gerado pelo Gemini
+    const textoGerado = resultado?.candidates?.[0]?.content?.parts?.[0]?.text || 'Sem resposta gerada';
+
+    res.json({ respostaGemini: textoGerado });
   } catch (error) {
     console.error('Erro ao chamar Gemini:', error.message);
     res.status(500).json({ error: 'Falha ao gerar conteúdo com Gemini' });
@@ -53,4 +58,3 @@ app.post('/gerar-video', upload.single('imagem'), async (req, res) => {
 app.listen(3000, () => {
   console.log('Servidor rodando na porta 3000');
 });
-
