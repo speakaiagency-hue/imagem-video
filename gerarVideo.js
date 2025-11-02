@@ -1,7 +1,7 @@
 import { GoogleGenAI } from "@google/genai";
 
-// Substitua pela sua chave da API Gemini
-const ai = new GoogleGenAI({ apiKey: "AIzaSyDgUuLExemploChaveRealAqui" });
+// ✅ Chave da API Gemini válida
+const ai = new GoogleGenAI({ apiKey: "AIzaSyBzl8n29xiFFBEmLZKq5oSxMthTCWsf_ag" });
 
 const prompt = "Panning wide shot of a calico kitten sleeping in the sunshine";
 
