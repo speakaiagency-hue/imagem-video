@@ -10,7 +10,11 @@ async function gerarVideo() {
     // Etapa 1: gerar imagem com Gemini 2.5 Flash Image
     const imageResponse = await ai.models.generateContent({
       model: "gemini-2.5-flash-image",
-      prompt: prompt,
+      contents: [
+        {
+          parts: [{ text: prompt }]
+        }
+      ]
     });
 
     const imageBytes = imageResponse.generatedImages[0].image.imageBytes;
