@@ -18,7 +18,8 @@ async function gerarVideo() {
             parts: [{ text: prompt }]
           }
         ]
-      ];
+      });
+
       imageBytes = imageResponse.generatedImages?.[0]?.image?.imageBytes;
       if (!imageBytes) throw new Error("Imagem não gerada");
       console.log("✅ Imagem gerada com gemini-2.0-flash-preview-image-generation");
@@ -32,6 +33,7 @@ async function gerarVideo() {
           }
         ]
       });
+
       const description = textResponse.candidates?.[0]?.content?.parts?.[0]?.text || "Imagem de um gatinho dormindo ao sol";
       console.log("📝 Descrição gerada:", description);
       throw new Error("Imagem não disponível — fallback para descrição");
