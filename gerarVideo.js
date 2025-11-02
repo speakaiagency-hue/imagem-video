@@ -1,7 +1,7 @@
 import { GoogleGenAI } from "@google/genai";
 
-// ✅ Chave da API Gemini válida
-const ai = new GoogleGenAI({ apiKey: "AIzaSyBzl8n29xiFFBEmLZKq5oSxMthTCWsf_ag" });
+// ✅ Nova chave da API Gemini
+const ai = new GoogleGenAI({ apiKey: "AIzaSyB1oZMTY9gU-xt5z3xL7ylc9TtGbnX3GNk" });
 
 const prompt = "Panning wide shot of a calico kitten sleeping in the sunshine";
 
